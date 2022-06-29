@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+           body{
+            background-image:radial-gradient(50% 50% at 50% 50%, #181743 0%, #340C64 100%);
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+       #title,#date{
+        height: 3vw;
+        width :50vw;
+       }
+       #description{
+        width: 50vw;
+        height: 4vw;
+       }
+       #content{
+        height: 10vw;
+        width :50vw;
+       }
+       label{
+        font-size: 2vw;
+       }
+       a{
+        text-decoration: none;
+        color: black;
+       }
+       .submit{
+        display: flex;
+        justify-content: center;
+       }
+       .btn-primary{
+        margin-right: 1vw;
+       }
+       .title1{
+            text-align: center;
+            font-size: 5vw;
+            color: white;
+            display: inline-block;
+        }
+        .title0{
+            margin-right: 2vw;
+            color: rgba(19, 238, 172, 1);
+            font-size: 5vw;
+            text-align: center;
+        }
+        .title{
+            justify-content: center;
+            display: flex;
+        }
+        label{
+            color:rgba(19, 238, 172, 1) ;
+        }
+        #posting{
+            color: #340C64;
+            background-color:rgba(19, 238, 172, 1) ;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <div class="title0">Edit</div>
+    <div class="title1">Article</div>
+    </div> <br><br>
+    <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
+        <div class="container">
+            <div class="a">
+                <label for="title">Title</label> <br>
+                <input value="<%= article.title %>" type="text" name="title" id="title"> 
+              </div>
+              <br><br>
+              <div class="b">
+                <label  for="date">Date</label> <br>
+                <textarea name="date" id="date"> <%= article.date %></textarea>
+              </div>
+              <br><br>
+              <div class="c">
+                <label value="<%= article.description %>" for="description">Description</label> <br>
+                <textarea name="description" id="description"></textarea>
+              </div>
+              <br><br>
+              <div class="d">
+                <label for="content">Content</label> <br>
+                <textarea name="content" id="content"> <%= article.content %></textarea>
+              </div>
+        </div>
+        <br>
+        <div class="submit">
+            <button type="submit" id="posting" class="btn btn-primary">POST</button>
+            <a class="btn btn-danger" href="/">CANCEL</a> 
+        </div>
+     
+       
+    </form>
+</body>
+</html>
+

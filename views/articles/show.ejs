@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background-image:radial-gradient(50% 50% at 50% 50%, #181743 0%, #340C64 100%);
+        }
+        h1{
+            margin-left: 4vw;
+            color: white;
+            text-align: center;
+            font-size: 5vw
+        }
+        .card-title{
+            margin-left: 1vw;
+            font-size: 4vw;
+        }
+        .card-subtitle{
+            margin-left: 1vw;
+            font-size: 1.8vw;
+        }
+        .card-body{
+            margin-left: 1vw;
+            font-size: 1.5vw;
+            font-size: 2vw;
+        }
+        .container{
+            color: white;
+            width: 75vw;
+            border: solid white 0.1vw;
+            border-radius: 0.3vw;
+            padding-bottom: 0.5vw;
+        }
+        .dropdown{
+            margin-top: 1vw;
+            margin-left: 1vw;
+            margin-right: 36vw;
+        }
+        .list{
+            position: fixed;
+            margin-top: 0.5vw;
+            margin-left: 1vw;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: 0.5s;
+            overflow: hidden;
+        }
+        #list{
+            display: inline-block;
+            position: fixed;
+            overflow: hidden;
+            margin-left: 1vw;
+        }
+        a{
+            margin-bottom: 0.5vw;
+        }
+        .cont{
+            display: flex;
+            justify-content: center;
+        }
+        .display{
+            display: flex;
+            align-items: center;
+        }
+        .newlist{
+            transform: scaleY(1);
+        }
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text{
+            color: rgba(19, 238, 172, 1);
+            font-size: 5vw;
+        }
+        .btn.btn-primary{
+            background-color: rgba(19, 238, 172, 1);
+            color: #340C64;
+        }
+        .btn.btn-danger{
+            margin-left: 1vw;
+        }
+        .description{
+            font-size: 3vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="display">
+        <button class="dropdown" id="dropdown">
+            <i class="fa fa-bars"></i>
+        </button>
+        <h1>Blog</h1>
+    </div>
+    <div class="list" id="list">
+        <a href="/" class="btn btn-primary btn-sm">HOME</a><br>
+        <a href="/articles/edit/<%= article.id %>" class="btn btn-primary btn-sm">EDIT</a><br>
+    </div>
+    <div class="box">
+        
+        <div class="text">
+            Get To Know Me
+        </div>
+    </div>
+  
+    <hr>
+    <div class="container">
+       
+
+            <div class="card-title">
+                <%= article.title %> <br>
+                <div class="description">
+                    <%= article.description %>
+                </div>
+            </div>
+            <hr>
+            <div class="card-subtitle">
+                
+                <%= article.date %>
+                <br><br>
+            </div>
+            <div class="card-body">
+                <%= article.content %> 
+            </div>
+        <br>
+            <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline"><button type="submit" class="btn btn-danger btn-md"> DELETE</button></form>
+            <br>
+    </div>
+    <script>
+        let menu = document.getElementById('dropdown');
+        let list = document.getElementById('list');
+        menu.addEventListener('click',()=>{
+            list.classList.toggle('newlist');
+        })
+    </script>
+</body>
+</html>
